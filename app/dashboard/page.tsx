@@ -1,9 +1,11 @@
+export const dynamic = 'force-dynamic';
 'use client';
 import { useEffect, useState } from 'react';
 import { supabase } from '../components/supabaseClient';
+import { User } from '@supabase/supabase-js';
 
 export default function Dashboard() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
